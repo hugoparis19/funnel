@@ -1,11 +1,21 @@
 <div>
-  <form autocomplete="off" [formGroup]="stepFormGroup" (ngSubmit)="next(stepFormGroup.value)">
+  <form autocomplete="off" [formGroup]="stepGroup" (ngSubmit)="next(stepGroup.value)">
     <div [ngClass]="{'has-error': activitySectorMessage}">
-      <label>Email:</label>
-      <input formControlName="activitySector" id="activitySector" type="text" placeholder="activitySector..." />
+      <label>Activity Sector:</label>
+      <select formControlName="activitySector">
+        <option *ngFor="let sector of activitySectors" [value]="sector.id">{{sector.label}}</option>
+      </select>
       <span *ngIf="activitySectorMessage">{{ activitySectorMessage }}</span>
     </div>
 
-    <button type="submit" class="btn btn-primary" [disabled]="stepFormGroup.invalid">Save</button>
+    <div [ngClass]="{'has-error': professionMessage}">
+      <label>Job :</label>
+      <select formControlName="profession">
+        <option *ngFor="let prof of professions" [value]="prof.id">{{prof.label}}</option>
+      </select>
+      <span *ngIf="professionMessage">{{ professionMessage }}</span>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="stepGroup.invalid">Save</button>
   </form>
 </div>

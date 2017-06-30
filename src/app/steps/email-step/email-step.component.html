@@ -1,11 +1,11 @@
 <div>
-  <form autocomplete="off" [formGroup]="stepFormGroup" (ngSubmit)="next(stepFormGroup.value)">
+  <form autocomplete="off" [formGroup]="stepGroup" (ngSubmit)="next(stepGroup.value)">
     <div [ngClass]="{'has-error': emailMessage}">
       <label>Email:</label>
       <input formControlName="email" id="email" type="text" placeholder="email..." />
       <span *ngIf="emailMessage">{{ emailMessage }}</span>
     </div>
 
-    <button type="submit" class="btn btn-primary" [disabled]="stepFormGroup.invalid">Save</button>
+    <button type="submit" class="btn btn-primary" [disabled]="stepGroup.invalid">Save</button>
   </form>
 </div>

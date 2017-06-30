@@ -10,7 +10,7 @@ import 'rxjs/add/operator/debounceTime';
 })
 export class EmailStepComponent implements OnInit {
 
-  stepFormGroup: FormGroup;
+  stepGroup: FormGroup;
   emailForm: FormControl;
   emailMessage: string;
 
@@ -24,7 +24,7 @@ export class EmailStepComponent implements OnInit {
   ngOnInit() {
     this.emailForm = new FormControl('', [Validators.required, Validators.email]);
 
-    this.stepFormGroup = new FormGroup({
+    this.stepGroup = new FormGroup({
       email: this.emailForm
     });
 

@@ -11,25 +11,62 @@ import 'rxjs/add/operator/debounceTime';
 })
 export class ProfessionalSituationStepComponent implements OnInit {
 
-  stepFormGroup: FormGroup;
+  stepGroup: FormGroup;
   activitySectorForm: FormControl;
+  professionForm: FormControl;
   activitySectorMessage: string;
+  professionMessage: string;
 
   private validationMessages = {
     required: 'Champ obligatoire : merci de le renseigner.'
   };
 
+  activitySectors: any; // to type
+  professions: any;
+
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.activitySectorForm = new FormControl('', [Validators.required]);
+    this.activitySectorForm = new FormControl('0', [Validators.required]);
+    this.professionForm = new FormControl('0', [Validators.required]);
 
-    this.stepFormGroup = new FormGroup({
-      activitySector: this.activitySectorForm
+    this.stepGroup = new FormGroup({
+      activitySector: this.activitySectorForm,
+      profession: this.professionForm
     });
 
-    this.activitySectorForm.valueChanges.debounceTime(1000).subscribe(value =>
-      this.setMessage(this.activitySectorForm));
+    // this.activitySectorForm.valueChanges.debounceTime(1000).subscribe(value =>
+    //   this.setMessage(this.activitySectorForm));
+
+    this.activitySectors = [
+      {
+        id: 0,
+        label: 'choose ...'
+      },
+      {
+        id: 1,
+        label: 'public'
+      },
+      {
+        id: 2,
+        label: 'private'
+      }
+    ];
+
+    this.professions = [
+      {
+        id: 0,
+        label: 'choose ...'
+      },
+      {
+        id: 1,
+        label: 'job1'
+      },
+      {
+        id: 2,
+        label: 'job2'
+      }
+    ];
   }
 
   next(formValues) {

@@ -32,7 +32,7 @@ describe('EmailStepComponent', () => {
 
   describe('the form', () => {
     it('should be invalid when empty', () => {
-      expect(component.stepFormGroup.valid).toBeFalsy();
+      expect(component.stepGroup.valid).toBeFalsy();
       expect(component.emailForm.valid).toBeFalsy();
 
       let errors = {};
