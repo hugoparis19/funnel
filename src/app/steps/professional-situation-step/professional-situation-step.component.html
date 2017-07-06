@@ -8,10 +8,10 @@
       <span *ngIf="activitySectorMessage">{{ activitySectorMessage }}</span>
     </div>
 
-    <div [ngClass]="{'has-error': professionMessage}">
+    <div [ngClass]="{'has-error': professionMessage}" *ngIf="displayProfession()">
       <label>Job :</label>
       <select formControlName="profession">
-        <option *ngFor="let prof of professions" [value]="prof.id">{{prof.label}}</option>
+        <option *ngFor="let prof of professionsList" [value]="prof.id">{{prof.label}}</option>
       </select>
       <span *ngIf="professionMessage">{{ professionMessage }}</span>
     </div>

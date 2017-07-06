@@ -1,13 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProfessionalSituationStepComponent } from './professional-situation-step.component';
+import { StartStepComponent } from './start-step.component';
+import { FunnelManager } from 'app/services/funnel-manager.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-import { FunnelManager } from 'app/services/funnel-manager.service';
 
-describe('ProfessionalSituationStepComponent', () => {
-  let component: ProfessionalSituationStepComponent;
-  let fixture: ComponentFixture<ProfessionalSituationStepComponent>;
+describe('StartStepComponent', () => {
+  let component: StartStepComponent;
+  let fixture: ComponentFixture<StartStepComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -16,14 +16,14 @@ describe('ProfessionalSituationStepComponent', () => {
         ReactiveFormsModule,
         RouterTestingModule
       ],
-      declarations: [ ProfessionalSituationStepComponent ],
+      declarations: [ StartStepComponent ],
       providers: [FunnelManager]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProfessionalSituationStepComponent);
+    fixture = TestBed.createComponent(StartStepComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

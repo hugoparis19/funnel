@@ -7,12 +7,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProfessionalSituationStepComponent } from './steps/professional-situation-step/professional-situation-step.component';
 import { EmailStepComponent } from './steps/email-step/email-step.component';
+import { FinalStepComponent } from './steps/final-step/final-step.component';
+import { BaseStepComponent } from './steps/base-step/base-step.component';
+import { FunnelManager } from 'app/services/funnel-manager.service';
+import { StartStepComponent } from './steps/start-step/start-step.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProfessionalSituationStepComponent,
-    EmailStepComponent
+    EmailStepComponent,
+    FinalStepComponent,
+    StartStepComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +27,7 @@ import { EmailStepComponent } from './steps/email-step/email-step.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [FunnelManager],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

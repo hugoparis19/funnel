@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { EmailStepComponent } from './email-step.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
+import { FunnelManager } from "app/services/funnel-manager.service";
 
 describe('EmailStepComponent', () => {
   let component: EmailStepComponent;
@@ -15,7 +16,8 @@ describe('EmailStepComponent', () => {
         ReactiveFormsModule,
         RouterTestingModule
       ],
-      declarations: [EmailStepComponent]
+      declarations: [EmailStepComponent],
+      providers: [FunnelManager]
     })
       .compileComponents();
   }));
