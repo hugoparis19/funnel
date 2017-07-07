@@ -11,6 +11,8 @@ import { FinalStepComponent } from './steps/final-step/final-step.component';
 import { BaseStepComponent } from './steps/base-step/base-step.component';
 import { FunnelManager } from 'app/services/funnel-manager.service';
 import { StartStepComponent } from './steps/start-step/start-step.component';
+import { StoreModule } from '@ngrx/store';
+import tunnelState from './store/states/tunnel.state';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { StartStepComponent } from './steps/start-step/start-step.component';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    StoreModule.provideStore(tunnelState),
     AppRoutingModule
   ],
   providers: [FunnelManager],

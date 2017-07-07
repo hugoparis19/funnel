@@ -4,6 +4,8 @@ import { ProfessionalSituationStepComponent } from './professional-situation-ste
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FunnelManager } from 'app/services/funnel-manager.service';
+import { StoreModule } from '@ngrx/store';
+import tunnelState from '../../store/states/tunnel.state';
 
 describe('ProfessionalSituationStepComponent', () => {
   let component: ProfessionalSituationStepComponent;
@@ -14,7 +16,8 @@ describe('ProfessionalSituationStepComponent', () => {
       imports: [
         FormsModule,
         ReactiveFormsModule,
-        RouterTestingModule
+        RouterTestingModule,
+        StoreModule.provideStore(tunnelState)
       ],
       declarations: [ ProfessionalSituationStepComponent ],
       providers: [FunnelManager]

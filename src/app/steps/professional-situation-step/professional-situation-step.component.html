@@ -1,5 +1,5 @@
 <div>
-  <form autocomplete="off" [formGroup]="stepGroup" (ngSubmit)="next(stepGroup.value)">
+  <form autocomplete="off" [formGroup]="stepGroup" (ngSubmit)="goToNextStep()">
     <div [ngClass]="{'has-error': activitySectorMessage}">
       <label>Activity Sector:</label>
       <select formControlName="activitySector">

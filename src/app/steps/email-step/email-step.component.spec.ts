@@ -3,7 +3,11 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { EmailStepComponent } from './email-step.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-import { FunnelManager } from "app/services/funnel-manager.service";
+import { FunnelManager } from 'app/services/funnel-manager.service';
+import { Store, StoreModule } from '@ngrx/store';
+import { createStubInstance } from 'sinon';
+import { EmailStepState } from 'app/store/states/email-step.state';
+import tunnelState from '../../store/states/tunnel.state';
 
 describe('EmailStepComponent', () => {
   let component: EmailStepComponent;
@@ -14,7 +18,8 @@ describe('EmailStepComponent', () => {
       imports: [
         FormsModule,
         ReactiveFormsModule,
-        RouterTestingModule
+        RouterTestingModule,
+        StoreModule.provideStore(tunnelState)
       ],
       declarations: [EmailStepComponent],
       providers: [FunnelManager]

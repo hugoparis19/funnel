@@ -5,12 +5,14 @@ import 'rxjs/add/operator/debounceTime';
 import { forbiddenValue } from 'app/validators/forbidden-value.validator';
 import { BaseStepComponent } from 'app/steps/base-step/base-step.component';
 import { FunnelManager } from 'app/services/funnel-manager.service';
+import { ProfessionalSituationStepService } from 'app/steps/professional-situation-step/professional-situation-step.service';
 
 
 @Component({
   selector: 'yuc-professional-situation-step',
   templateUrl: './professional-situation-step.component.html',
-  styleUrls: ['./professional-situation-step.component.scss']
+  styleUrls: ['./professional-situation-step.component.scss'],
+  providers: [ProfessionalSituationStepService]
 })
 export class ProfessionalSituationStepComponent extends BaseStepComponent implements OnInit {
 
@@ -62,7 +64,7 @@ export class ProfessionalSituationStepComponent extends BaseStepComponent implem
     forbiddenValue: 'Champ obligatoire : merci de le renseigner.'
   };
 
-  constructor(router: Router, funnelManager: FunnelManager) {
+  constructor(router: Router, funnelManager: FunnelManager, private stepService: ProfessionalSituationStepService) {
     super(router, funnelManager);
     this.step = funnelManager.professionalSituationStep;
   };
@@ -82,13 +84,11 @@ export class ProfessionalSituationStepComponent extends BaseStepComponent implem
     this.professionsList = this.professions.slice(0);
     this.activitySectorForm.valueChanges.subscribe(value =>
       this.updateProfessionsList());
+    this.stepService.loadProfessionalSituation().subscribe(res => this.stepGroup.patchValue(res));
   }
 
   displayProfession() {
-    if (this.activitySectorForm.value !== '0') {
-      return true;
-    }
-    return false;
+    return this.activitySectorForm.value !== '0';
   }
 
   updateProfessionsList() {
@@ -111,6 +111,11 @@ export class ProfessionalSituationStepComponent extends BaseStepComponent implem
       this.activitySectorMessage = Object.keys(c.errors).map(key =>
         this.validationMessages[key]).join(' ');
     }
+  }
+
+  goToNextStep() {
+    this.stepService.updateProfessionalSituation(this.stepGroup.value);
+    super.next(this.stepGroup.value);
   }
 
 }
